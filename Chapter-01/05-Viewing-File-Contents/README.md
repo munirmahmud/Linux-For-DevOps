@@ -1,6 +1,7 @@
 # Chapter 1 - Lesson 5: Viewing File Contents
 
 ✅ **Chapter 1 | Lesson 5 of 10**
+
 📂 **Topic: cat, less, more, head, tail, tac**
 
 
