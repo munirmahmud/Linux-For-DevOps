@@ -26,17 +26,17 @@ Most DevOps Engineers use Linux every day but rarely understand what's happening
 
 | # | Lesson | Status |
 |---|--------|--------|
-| 01 | [ Understanding File Permissions ](./Chapter-02/01-Understanding-File-Permissions) | ✅ Done |
-| 02 | [ Changing Permissions ](./Chapter-02/02-Changing-Permissions) | ✅ Done |
-| 03 | [ Special Permissions ](./Chapter-02/03-Special-Permissions) | ✅ Done |
-| 04 | [ Default Permission Control ](./Chapter-02/04-Default-Permission-Control) | ✅ Done |
-| 05 | [ Access Control Lists ](./Chapter-02/05-Access-Control-Lists) | ✅ Done |
-| 06 | [ User Management ](./Chapter-02/06-User-Management) | ✅ Done |
-| 07 | [ Group Management ](./Chapter-02/07-Group-Management) | ✅ Done |
-| 08 | [ sudo & the Sudoers File ](./Chapter-02/08-sudo-and-Sudoers-File) | ✅ Done |
-| 09 | [ Switching Users ](./Chapter-02/09-Switching-Users) | ✅ Done |
-| 10 | [ User Auth Files ](./Chapter-02/10-User-Auth-Files) | ✅ Done |
-| 11 | [ Final Assessment ](./Chapter-02/11-Assessment) | ✅ Done |
+| 01 | [ Understanding File Permissions ](./01-Understanding-File-Permissions) | ✅ Done |
+| 02 | [ Changing Permissions ](./02-Changing-Permissions) | ✅ Done |
+| 03 | [ Special Permissions ](./03-Special-Permissions) | ✅ Done |
+| 04 | [ Default Permission Control ](./04-Default-Permission-Control) | ✅ Done |
+| 05 | [ Access Control Lists ](./05-Access-Control-Lists) | ✅ Done |
+| 06 | [ User Management ](./06-User-Management) | ✅ Done |
+| 07 | [ Group Management ](./07-Group-Management) | ✅ Done |
+| 08 | [ sudo & the Sudoers File ](./08-sudo-and-Sudoers-File) | ✅ Done |
+| 09 | [ Switching Users ](./09-Switching-Users) | ✅ Done |
+| 10 | [ User Auth Files ](./10-User-Auth-Files) | ✅ Done |
+| 11 | [ Final Assessment ](./11-Assessment) | ✅ Done |
 
 
 ---

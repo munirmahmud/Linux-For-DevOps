@@ -26,17 +26,17 @@ Most DevOps Engineers use Linux every day but rarely understand what's happening
 
 | # | Lesson | Status |
 |---|--------|--------|
-| 01 | [ What is Linux? History, Kernel, Distros ](./Chapter-01/01-What-is-Linux) | ✅ Done |
-| 02 | [Linux File System Hierarchy ](./Chapter-01/02-Linux-File-System-Hierarchy/) | ✅ Done |
-| 03 | [Navigating the File System ](./Chapter-01/03-Navigating-the-File-System) | ✅ Done |
-| 04 | [ Working with Files & Directories ](./Chapter-01/04-Working-with-Files-Directories) | ✅ Done |
-| 05 | [ Viewing File Contents ](./Chapter-01/05-Viewing-File-Contents) | ✅ Done |
-| 06 | [ Finding Files & Searching ](./Chapter-01/06-Finding-Files-And-Searching) | ✅ Done |
-| 07 | [ File Editors (nano, vim) ](./Chapter-01/07-File-Editors) | ✅ Done |
-| 08 | [ Links in Linux ](./Chapter-01/08-Links-in-Linux) | ✅ Done |
-| 09 | [ Input/Output Redirection & Pipes ](./Chapter-01/09-Input-Output-Redirection-and-Pipes) | ✅ Done |
-| 10 | [ Archiving & Compression ](./Chapter-01/10-Archiving-and-Compression) | ✅ Done |
-| 11 | [ Final Assessment ](./Chapter-01/11-Assessment) | ✅ Done |
+| 01 | [ What is Linux? History, Kernel, Distros ](./01-What-is-Linux) | ✅ Done |
+| 02 | [Linux File System Hierarchy ](./02-Linux-File-System-Hierarchy/) | ✅ Done |
+| 03 | [Navigating the File System ](./03-Navigating-the-File-System) | ✅ Done |
+| 04 | [ Working with Files & Directories ](./04-Working-with-Files-Directories) | ✅ Done |
+| 05 | [ Viewing File Contents ](./05-Viewing-File-Contents) | ✅ Done |
+| 06 | [ Finding Files & Searching ](./06-Finding-Files-And-Searching) | ✅ Done |
+| 07 | [ File Editors (nano, vim) ](./07-File-Editors) | ✅ Done |
+| 08 | [ Links in Linux ](./08-Links-in-Linux) | ✅ Done |
+| 09 | [ Input/Output Redirection & Pipes ](./09-Input-Output-Redirection-and-Pipes) | ✅ Done |
+| 10 | [ Archiving & Compression ](./10-Archiving-and-Compression) | ✅ Done |
+| 11 | [ Final Assessment ](./11-Assessment) | ✅ Done |
 
 
 ---

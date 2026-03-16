@@ -26,17 +26,17 @@ Most DevOps Engineers use Linux every day but rarely understand what's happening
 
 | # | Lesson | Status |
 |---|--------|--------|
-| 01 | [ Process & Performance Management ](./Chapter-03/01-Process-And-Performance-Management) | ✅ Done |
-| 02 | [ Viewing Processes ](./Chapter-03/02-Viewing-Processes) | ✅ Done |
-| 03 | [ Controlling Processes ](./Chapter-03/03-Controlling-Processes) | ✅ Done |
-| 04 | [ Background & Foreground Jobs ](./Chapter-03/04-Background-Foreground-Jobs) | ✅ Done |
-| 05 | [ Process Priority ](./Chapter-03/05-Process-Priority) | ✅ Done |
-| 06 | [ Memory Monitoring ](./Chapter-03/06-Memory-Monitoring) | ✅ Done |
-| 07 | [ CPU Monitoring ](./Chapter-03/07-CPU-Monitoring) | ✅ Done |
-| 08 | [ Disk I/O Monitoring ](./Chapter-03/08-Disk-IO-Monitoring) | ✅ Done |
-| 09 | [ System-wide Performance ](./Chapter-03/09-System-wide-Performance) | ✅ Done |
-| 10 | [ Troubleshooting High CPU/Memory ](./Chapter-03/10-Troubleshooting-High-CPU-Memory) | ✅ Done |
-| 11 | [ Final Assessment ](./Chapter-03/11-Assessment) | ✅ Done |
+| 01 | [ Process & Performance Management ](./01-Process-And-Performance-Management) | ✅ Done |
+| 02 | [ Viewing Processes ](./02-Viewing-Processes) | ✅ Done |
+| 03 | [ Controlling Processes ](./03-Controlling-Processes) | ✅ Done |
+| 04 | [ Background & Foreground Jobs ](./04-Background-Foreground-Jobs) | ✅ Done |
+| 05 | [ Process Priority ](./05-Process-Priority) | ✅ Done |
+| 06 | [ Memory Monitoring ](./06-Memory-Monitoring) | ✅ Done |
+| 07 | [ CPU Monitoring ](./07-CPU-Monitoring) | ✅ Done |
+| 08 | [ Disk I/O Monitoring ](./08-Disk-IO-Monitoring) | ✅ Done |
+| 09 | [ System-wide Performance ](./09-System-wide-Performance) | ✅ Done |
+| 10 | [ Troubleshooting High CPU/Memory ](./10-Troubleshooting-High-CPU-Memory) | ✅ Done |
+| 11 | [ Final Assessment ](./11-Assessment) | ✅ Done |
 
 
 ---
