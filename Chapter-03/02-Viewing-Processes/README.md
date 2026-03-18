@@ -23,9 +23,9 @@
 
 ### এটা কী?
 
-`ps` মানে **Process Status**। এটা তোমাকে একটা still photo-র মতো দেখায়, ঠিক এই মুহূর্তে কোন processes চলছে।
+`ps` মানে **Process Status**। এটা আপনাকে একটা still photo-র মতো দেখাবে, ঠিক এই মুহূর্তে কোন process-গুলো চলছে।
 
-> **Analogy:** কল্পনা করুন আপনি একটা ব্যস্ত রাস্তার ছবি তুললেন। সেই ছবিতে যে গাড়িগুলো আছে, সেটাই `ps`। Live video না, একটা snapshot।
+> কল্পনা করুন আপনি একটা ব্যস্ত রাস্তার ছবি তুললেন। সেই ছবিতে যে গাড়িগুলো আছে, সেটাই `ps`। Live video না, একটা snapshot।
 
 
 ### Basic Syntax:
@@ -37,7 +37,7 @@ ps [options]
 
 ### সবচেয়ে Common `ps` Commands:
 
-#### 1️⃣ শুধু নিজের (current user-এর) processes দেখুন:
+শুধু নিজের (current user-এর) processes দেখুন:
 
 ```bash
 ps
@@ -69,8 +69,8 @@ USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1 169936 13200 ?        Ss   10:00   0:01 /sbin/init
 root       512  0.0  0.0  15432  1024 ?        Ss   10:00   0:00 /usr/sbin/sshd
 www-data  1023  0.1  0.5 512340 45000 ?        S    10:01   0:05 nginx: worker
-rahman    1500  0.0  0.1  21232  8000 pts/0    Ss   10:05   0:00 bash
-rahman    1580  0.0  0.0   8936   812 pts/0    R+   10:10   0:00 ps aux
+munir    1500  0.0  0.1  21232  8000 pts/0    Ss   10:05   0:00 bash
+munir    1580  0.0  0.0   8936   812 pts/0    R+   10:10   0:00 ps aux
 ```
 
 
@@ -93,18 +93,23 @@ rahman    1580  0.0  0.0   8936   812 pts/0    R+   10:10   0:00 ps aux
 
 ### STAT কলামের মানে:
 
-| Code | মানে |
-|------|------|
-| `R` | Running (এখন CPU-তে চলছে) |
-| `S` | Sleeping (কিছুর জন্য অপেক্ষা করছে) |
-| `D` | Uninterruptible sleep (disk I/O-তে আটকে) |
-| `Z` | Zombie (মরা কিন্তু parent এখনো নেয়নি) |
-| `T` | Stopped (থামানো হয়েছে) |
-| `s` | Session leader |
-| `+` | Foreground process |
+| Code | মানে | সহজ ভাষায় |
+|------|------|------------|
+| `S` | Sleeping | কাজ নেই, কিছুর জন্য অপেক্ষা করছে (স্বাভাবিক) |
+| `R` | Running | এখন CPU-তে কাজ করছে |
+| `D` | Disk Sleep | Disk I/O-র জন্য আটকে আছে, interrupt করা যাবে না |
+| `Z` | Zombie | মরে গেছে কিন্তু parent এখনো সরায়নি |
+| `T` | Stopped | কেউ থামিয়ে দিয়েছে |
+| `I` | Idle | Kernel-এর idle thread, কিছুই করছে না |
+| `s` | Session leader | এই process একটি session-এর boss (যেমন: bash, sshd) |
+| `l` | Multi-threaded | process-টি একাধিক thread ব্যবহার করছে |
+| `L` | Locked pages in RAM | কিছু memory RAM থেকে সরানো যাবে না (swap হবে না) |
+| `+` | Foreground | Terminal-এ সামনে চলছে |
+| `<` | High priority | অন্যদের চেয়ে বেশি priority পাচ্ছে |
+| `N` | Low priority (nice) | অন্যদের চেয়ে কম priority - nice value বেশি |
 
 
-#### 3️⃣ নির্দিষ্ট একটি process খুঁজুন:
+#### নির্দিষ্ট একটি process খুঁজুন:
 
 ```bash
 ps aux | grep nginx
@@ -113,7 +118,7 @@ ps aux | grep nginx
 **Output:**
 ```
 www-data  1023  0.1  0.5 512340 45000 ?   S  10:01  0:05 nginx: worker process
-rahman    1610  0.0  0.0   6432   720 pts/0  S+  10:12  0:00 grep --color=auto nginx
+munir    1610  0.0  0.0   6432   720 pts/0  S+  10:12  0:00 grep --color=auto nginx
 ```
 
 **Tip:** grep নিজেই output-এ দেখায়। এটা ignore করতে চাইলে:
@@ -123,7 +128,7 @@ ps aux | grep nginx | grep -v grep
 ```
 
 
-#### 4️⃣ Process tree হিসেবে দেখুন (parent-child সম্পর্ক):
+#### Process tree হিসেবে দেখুন (parent-child সম্পর্ক):
 
 ```bash
 ps auxf
@@ -134,15 +139,17 @@ ps auxf
 USER       PID %CPU %MEM COMMAND
 root         1  0.0  0.1 /sbin/init
 root       512  0.0  0.0  \_ /usr/sbin/sshd
-root      1200  0.0  0.0      \_ sshd: rahman
-rahman    1201  0.0  0.1          \_ -bash
-rahman    1580  0.0  0.0              \_ ps auxf
+root      1200  0.0  0.0      \_ sshd: munir
+munir    1201  0.0  0.1          \_ -bash
+munir    1580  0.0  0.0              \_ ps auxf
 ```
 
 এখানে `\_ ` দিয়ে বোঝাচ্ছে কে কার child process।
 
 
-#### 5️⃣ নির্দিষ্ট columns দেখুন:
+`f` মানে হলো Forest অর্থাৎ processes গুলোকে গাছের মতো (tree structure) করে দেখাও, যাতে বোঝা যায় কোন process কার থেকে জন্ম নিয়েছে।
+
+#### নির্দিষ্ট columns দেখুন:
 
 ```bash
 ps -eo pid,user,pcpu,pmem,comm
@@ -154,10 +161,10 @@ ps -eo pid,user,pcpu,pmem,comm
     1 root      0.0  0.1 systemd
   512 root      0.0  0.0 sshd
  1023 www-data  0.1  0.5 nginx
- 1500 rahman    0.0  0.1 bash
+ 1500 munir    0.0  0.1 bash
 ```
 
-> এখানে `-e` মানে সব process, `-o` মানে output format নিজে বেছে নাও।
+> এখানে `-e` মানে সব process, `-o` মানে output format নিজের মতো করে সাজিয়ে নেয়া।
 
 
 ## Tool 2: `top` - Live Process Monitor
@@ -166,7 +173,7 @@ ps -eo pid,user,pcpu,pmem,comm
 
 `top` হলো real-time process viewer। এটা প্রতি কয়েক সেকেন্ডে automatically update হয়।
 
-> **Analogy:** `ps` যদি হয় রাস্তার still photo, তাহলে `top` হলো **live CCTV footage** - সবকিছু real-time-এ দেখাচ্ছে।
+> `ps` যদি হয় রাস্তার still photo, তাহলে `top` হলো **live CCTV footage** - সবকিছু real-time-এ দেখাচ্ছে।
 
 
 ### চালু করুন:
@@ -186,7 +193,7 @@ MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   2100.0 avail Mem
   PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
  1023 www-data  20   0  512340  45000  12000 S   0.7   1.1   0:05.23 nginx
   512 root      20   0   15432   1024    800 S   0.3   0.0   0:00.45 sshd
- 1500 rahman    20   0   21232   8000   6000 S   0.0   0.2   0:00.12 bash
+ 1500 munir    20   0   21232   8000   6000 S   0.0   0.2   0:00.12 bash
 ```
 
 
@@ -240,7 +247,7 @@ Tasks: 120 total,   1 running, 119 sleeping,   0 stopped,   0 zombie
 ### `top` এ নির্দিষ্ট user-এর process দেখুন:
 
 ```bash
-top -u rahman
+top -u munir
 ```
 
 
@@ -259,7 +266,7 @@ top -b -n 1
 
 `htop` হলো `top`-এর একটি **user-friendly, colorful, interactive** version। এটা দেখতে অনেক সুন্দর এবং ব্যবহার করা সহজ।
 
-> **Analogy:** `top` যদি হয় পুরনো black-and-white TV, তাহলে `htop` হলো **modern smart TV** সব কিছু রঙিন, সুন্দর করে সাজানো।
+> `top` যদি হয় পুরনো black-and-white TV, তাহলে `htop` হলো **modern smart TV** সব কিছু রঙিন, সুন্দর করে সাজানো।
 
 
 ### Install করুন (যদি না থাকে):
@@ -287,7 +294,7 @@ htop
   PID USER      PRI  NI  VIRT   RES   SHR S CPU% MEM%   TIME+  Command
  1023 www-data   20   0  500M  43M   11M S  0.7  1.1  0:05.23 nginx
   512 root       20   0   15M 1024K  800K S  0.3  0.0  0:00.45 sshd
- 1500 rahman     20   0   20M  7.8M  5.8M S  0.0  0.2  0:00.12 bash
+ 1500 munir     20   0   20M  7.8M  5.8M S  0.0  0.2  0:00.12 bash
 ```
 
 
@@ -327,7 +334,7 @@ htop
 
 `pgrep` মানে **Process GREP**। এটা process-এর নাম দিয়ে তার **PID** বের করে দেয়।
 
-> **Analogy:** কল্পনা করুন তোমার কাছে একটা লম্বা attendance sheet আছে। `pgrep` হলো সেই tool যেটা শুধু "Rahman" লিখলেই তার roll number বলে দেয়।
+> কল্পনা করুন আপনার কাছে একটা লম্বা attendance sheet আছে। `pgrep` হলো সেই tool যেটা শুধু "munir" লিখলেই তার roll number বলে দেয়।
 
 
 ### Basic Syntax:
@@ -339,7 +346,7 @@ pgrep [options] process_name
 
 ### Examples:
 
-#### 1️⃣ nginx-এর PID বের করুন:
+#### nginx-এর PID বের করুন:
 
 ```bash
 pgrep nginx
@@ -354,7 +361,7 @@ pgrep nginx
 (তিনটি nginx worker process চলছে)
 
 
-#### 2️⃣ Process নাম সহ দেখুন:
+#### Process নাম সহ দেখুন:
 
 ```bash
 pgrep -l nginx
@@ -368,10 +375,10 @@ pgrep -l nginx
 ```
 
 
-#### 3️⃣ নির্দিষ্ট user-এর process খুঁজুন:
+#### নির্দিষ্ট user-এর process খুঁজুন:
 
 ```bash
-pgrep -u rahman bash
+pgrep -u munir bash
 ```
 
 **Output:**
@@ -379,9 +386,8 @@ pgrep -u rahman bash
 1500
 ```
 
----
 
-#### 4️⃣ Full command দিয়ে খুঁজুন:
+#### Full command দিয়ে খুঁজুন:
 
 ```bash
 pgrep -f "python manage.py"
@@ -390,7 +396,7 @@ pgrep -f "python manage.py"
 > `-f` flag দিলে শুধু process name না, পুরো command line-এ search করে।
 
 
-#### 5️⃣ Process আছে কিনা check করুন (scripting-এ কাজে লাগে):
+#### Process আছে কিনা check করুন (scripting-এ কাজে লাগে):
 
 ```bash
 if pgrep nginx > /dev/null; then
@@ -414,7 +420,7 @@ top
 ```
 
 
-### Scenario 2: একটি service চলছে কিনা জানুন:
+### Scenario 2: কোন নির্দিষ্ট service চলছে কিনা জানুন:
 
 ```bash
 pgrep -l nginx
@@ -499,3 +505,14 @@ ps aux | grep bash | grep -v grep
 **Chapter 3 - Lesson 3: Controlling Processes**
 
 পরের lesson-এ আমরা শিখবো কীভাবে process বন্ধ করতে হয়। `kill`, `killall`, `pkill` এবং বিভিন্ন **signals** (SIGTERM, SIGKILL, SIGHUP) কী এবং কখন কোনটা ব্যবহার করতে হয়। DevOps-এ stuck process handle করার সবচেয়ে গুরুত্বপূর্ণ skill! *Happy Learning* 🚀
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../01-Process-And-Performance-Management">← Process &amp; Performance Management</a>
+    </td>
+    <td align="right">
+      <a href="../03-Controlling-Processes">Controlling Processes →</a>
+    </td>
+  </tr>
+</table>

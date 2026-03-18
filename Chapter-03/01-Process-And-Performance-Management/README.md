@@ -319,4 +319,16 @@ ps -p <PID> -o pid,ppid,user,cmd
 **Chapter 3 - Lesson 2: Viewing Processes**
 > `ps`, `top`, `htop`, `pgrep` - process দেখার সব tools বিস্তারিতভাবে শিখবো। `top` command-এর প্রতিটা column বুঝবো এবং real-time monitoring করতে শিখবো।
 
-[Next Lesson | Viewing Processes](../02-Viewing-Processes)
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="https://github.com/DevOpsquadHQ/Linux-For-DevOps/tree/main/Chapter-02/11-Assessment">← Chapter 2 - Assessment</a>
+    </td>
+    <td align="right">
+      <a href="../02-Viewing-Processes">Viewing Processes →</a>
+    </td>
+  </tr>
+</table>
+
+

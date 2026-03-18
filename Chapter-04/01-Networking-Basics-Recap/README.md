@@ -1,4 +1,4 @@
-# Chapter 4 - Lesson 1: Networking Basics Recap
+# Chapter 4 - Lesson 1: Networking Basics
 
 **Chapter 4 | Lesson 1 of 11**
 
