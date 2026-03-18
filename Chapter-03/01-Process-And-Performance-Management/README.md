@@ -13,7 +13,7 @@
 
 অর্থাৎ **যখন কোনো program চালু হয়, সেটাই তখন Process হয়ে যায়।**
 
-একই program থেকে **একাধিক process** তৈরি হতে পারে। যেমন আপনই একই সাথে দুটো terminal খুললে, দুটো আলাদা process চলবে।
+একই program থেকে **একাধিক process** তৈরি হতে পারে। যেমন আপনি একই সাথে দুটো terminal ওপেন করলেন, এক্ষেত্রে দুটো আলাদা process চলবে।
 
 
 ## PID - Process ID
@@ -110,7 +110,7 @@ Terminated (সম্পূর্ণ শেষ)
 ## Commands
 
 
-### 1️⃣ `echo $$` - নিজের PID দেখা
+### `echo $$` - নিজের PID দেখা
 
 **কী করে:** বর্তমান shell-এর PID দেখায়
 
@@ -124,9 +124,8 @@ echo $$
 ```
 > তোমার bash-এর PID হলো 1842
 
----
 
-### 2️⃣ `echo $PPID` - Parent PID দেখা
+### `echo $PPID` - Parent PID দেখা
 
 **কী করে:** বর্তমান shell-এর parent-এর PID দেখায়
 
@@ -139,7 +138,7 @@ echo $PPID
 1801
 ```
 
-### 3️⃣ `ps` - Process দেখা
+### `ps` - Process দেখা
 
 **কী করে:** বর্তমানে চলা process-গুলো দেখায়
 
@@ -154,9 +153,8 @@ ps
  1901 pts/0    00:00:00 ps
 ```
 
----
 
-### 4️⃣ `ps aux` - সব process বিস্তারিত দেখা
+### `ps aux` - সব process বিস্তারিত দেখা
 
 **Syntax breakdown:**
 ```
@@ -176,8 +174,8 @@ ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1 169536 13100 ?        Ss   10:00   0:01 /sbin/init
 root         2  0.0  0.0      0     0 ?        S    10:00   0:00 [kthreadd]
-rahul     1842  0.0  0.1  22756  5432 pts/0    Ss   10:05   0:00 bash
-rahul     1950  0.0  0.1  37348  3240 pts/0    R+   10:10   0:00 ps aux
+munir     1842  0.0  0.1  22756  5432 pts/0    Ss   10:05   0:00 bash
+munir     1950  0.0  0.1  37348  3240 pts/0    R+   10:10   0:00 ps aux
 ```
 
 ### Column গুলোর মানে কি:
@@ -192,7 +190,13 @@ rahul     1950  0.0  0.1  37348  3240 pts/0    R+   10:10   0:00 ps aux
 | COMMAND | কোন command চলছে |
 
 
-### 5️⃣ `pstree` - Family Tree আকারে দেখা
+### `pstree` - Family Tree আকারে দেখা
+
+এটা অনেক distro-তে বা linux-এর minimal version-এ থাকে না তখন ইন্সটল করে নিতে হয়। 
+
+```bash 
+sudo apt install psmisc
+```
 
 **কী করে:** কোন process কার থেকে জন্মেছে সেটা গাছের মতো (ট্রি আকারে) দেখায়
 
@@ -211,7 +215,7 @@ systemd─┬─sshd───sshd───bash───pstree
 > **DevOps-এ কাজে লাগে:** কোন service কার child process সেটা দেখতে। সমস্যা diagnose করতে।
 
 
-### 6️⃣ একটা Background Process তৈরি করে দেখুন
+### একটা Background Process তৈরি করে দেখুন
 
 ```bash
 # Background-এ একটা process রান করুন
@@ -227,12 +231,11 @@ ps aux | grep sleep
 **Output:**
 
 ```
-rahul     2045  0.0  0.0  12060   576 pts/0    S    10:15   0:00 sleep 200
+munir     2045  0.0  0.0  12060   576 pts/0    S    10:15   0:00 sleep 200
 ```
 
----
 
-### 7️⃣ `/proc` filesystem - Process-এর ভেতরে উঁকি মারা
+### `/proc` filesystem - Process-এর ভেতরে উঁকি মারা
 
 Linux-এ প্রতিটা process-এর জন্য `/proc/<PID>/` নামে একটা folder তৈরি হয়।
 
@@ -267,7 +270,7 @@ ls /proc/$$/fd
 | **System Process** | systemd, kernel threads | root চালায়, সবসময় চলে |
 | **Daemon Process** | nginx, sshd, cron | Background-এ চলে, terminal নেই |
 | **User Process** | bash, vim, python script | User চালায় |
-| **Zombie Process** | defunct process | কাজ শেষ কিন্তু তখনো আছে |
+| **Zombie Process** | defunct process | কাজ শেষ কিন্তু এখনো আছে |
 | **Orphan Process** | parent মারা গেছে | systemd adopt করে নেয় |
 
 
@@ -315,3 +318,5 @@ ps -p <PID> -o pid,ppid,user,cmd
 
 **Chapter 3 - Lesson 2: Viewing Processes**
 > `ps`, `top`, `htop`, `pgrep` - process দেখার সব tools বিস্তারিতভাবে শিখবো। `top` command-এর প্রতিটা column বুঝবো এবং real-time monitoring করতে শিখবো।
+
+[Next Lesson | Viewing Processes](./02-Viewing-Processes)
