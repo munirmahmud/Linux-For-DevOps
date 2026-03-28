@@ -106,6 +106,93 @@ done
 
 `seq 1 5` → 1 থেকে 5 পর্যন্ত সংখ্যা generate করে।
 
+`seq` মানে হলো `sequence` অর্থাৎ ধারাবাহিক সংখ্যার একটা list তৈরি করা। এটা একটা standalone Linux command যেটা terminal-এ সংখ্যার sequence print করে।
+
+### seq Basic syntax
+
+```bash
+seq FIRST LAST
+seq FIRST INCREMENT LAST
+seq LAST
+```
+
+```bash
+seq 1 5
+
+#Output:
+1
+2
+3
+4
+5
+```
+
+###  INCREMENT সহ
+
+```bash
+seq 1 2 10
+#   ↑ ↑  ↑
+# শুরু  বৃদ্ধি শেষ
+
+#Output:
+1
+3
+5
+7
+9
+```
+
+### উল্টো দিকে — Countdown!
+
+```bash
+seq 5 -1 1
+#   ↑  ↑  ↑
+# শুরু  কমবে শেষ
+
+#Output:
+5
+4
+3
+2
+1
+```
+
+### -w flag — সমান width (leading zeros)
+
+```bash
+seq -w 1 10
+
+#Output:
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+```
+
+### -s flag — Separator বদলানো
+
+```bash
+seq -s ", " 1 5
+
+#Output:
+1, 2, 3, 4, 5
+```
+
+```bash
+seq -s " | " 1 5
+
+#Output:
+1 | 2 | 3 | 4 | 5
+```
+
+
+
 
 ### Example 4 - Brace Expansion
 
@@ -164,6 +251,35 @@ Checking server: db02
 ```
 
 **DevOps use case:** একটা list of servers-এ একই command চালানো।
+
+`@` মানে "ALL" সবগুলো দাও।
+
+### `[@]` vs `[*] এই দুটোর পার্থক্য
+
+```bash
+servers=("web01" "web02" "db01" "db02")
+
+# [@] ব্যবহার - প্রতিটা item আলাদা আলাদা
+for server in "${servers[@]}"; do
+    echo "Server: $server"
+done
+
+#Output:
+Server: web01
+Server: web02
+Server: db01
+Server: db02
+```
+
+```bash
+# [*] ব্যবহার - সব item একটা বড় string হয়ে যায়
+for s in "${servers[*]}"; do
+    echo "Server: $s"
+done
+
+#Output:
+Server: web01 web02 db01 db02
+```
 
 
 ### Example 7 - Real DevOps Script: Multiple Files Create
@@ -288,6 +404,15 @@ Server: db01
 - `IFS=` → line-এর leading/trailing whitespace preserve করে
 - `-r` → backslash escape prevent করে
 - `< servers.txt` → file থেকে input নেওয়া
+
+`IFS` কী?
+
+`IFS = Internal Field Separator` এটা Bash-এর একটা special built-in variable যেটা বলে দেয় "কোন character দেখলে নতুন item শুরু হয়েছে বলে ধরবো।"
+
+Default IFS কী?
+
+By default IFS এর value হলো: Space, Tab, Newline
+
 
 
 ### Example 4 - Service Health Check Loop

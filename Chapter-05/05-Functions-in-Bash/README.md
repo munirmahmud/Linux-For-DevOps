@@ -42,21 +42,21 @@ echo "Done"
 
 Bash-এ function লেখার **দুটো valid উপায়** আছে:
 
-### উপায় ১ - `function` keyword দিয়ে:
+### Method #1 - `function` keyword দিয়ে:
 ```bash
 function function_name {
     # commands here
 }
 ```
 
-### উপায় ২ - Parentheses দিয়ে (বেশি popular):
+### Method #2 - Parentheses দিয়ে (বেশি popular):
 ```bash
 function_name() {
     # commands here
 }
 ```
 
-> দুটোই কাজ করে। DevOps scripts-এ সাধারণত **উপায় ২** বেশি দেখা যায়।
+> দুটোই কাজ করে। DevOps scripts-এ সাধারণত **Method #2** বেশি দেখা যায়।
 
 
 ## সবচেয়ে Simple Function - Hello World
@@ -213,7 +213,15 @@ echo "Root disk usage: $disk"
 Today's date: 2026-03-23
 Root disk usage: 45%
 ```
+> Command Substitution হলো একটা command-এর output কে সরাসরি একটা variable-এ বা অন্য command-এর ভেতরে ব্যবহার করা।
 
+```bash
+# Method #1 - Modern (recommended)
+result=$(command)
+
+# Method #2 - Old style (backtick)
+result=`command`
+```
 
 ## Local vs Global Variables
 
