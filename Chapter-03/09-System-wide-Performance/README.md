@@ -1,4 +1,4 @@
-# Chapter 3 - Lesson 9: System-wide Performance (dstat, sar, glances)
+# Chapter 3 - Lesson 9: System-wide Performance
 
 **Chapter 3 | Lesson 9 of 10**
 
@@ -653,3 +653,14 @@ glances -w --port 61208 &
 - OOM Killer কী এবং কখন activate হয়?
 
 এটাই Chapter 3-এর সবচেয়ে exciting lesson! *Happy Learning* 🚀
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../08-Disk-IO-Monitoring">← Disk IO Monitoring</a>
+    </td>
+    <td align="right">
+      <a href="../10-Troubleshooting-High-CPU-Memory">Troubleshooting High CPU/Memory →</a>
+    </td>
+  </tr>
+</table>

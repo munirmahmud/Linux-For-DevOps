@@ -1,18 +1,18 @@
 # Chapter 3 - Lesson 6: Memory Monitoring
 
-**Chapter 3 | Lesson 6 of 10** - Process & Performance Management
+**Chapter 3 | Lesson 6 of 10**
 
 
 ## Memory কী এবং কেন Monitor করতে হয়?
 
-আপনার Linux server একটা **অফিসের মতো**। সেই অফিসে:
+আপনার Linux server একটা অফিসের মতো। সেই অফিসে:
 
 - **RAM** = আপনার **কাজের টেবিল** - যেখানে আপনি এখন কাজ করছেন
 - **Swap** = আপনার **পাশের ড্রয়ার** - টেবিল ভরে গেলে কিছু জিনিস এখানে রাখেন
 - **Disk (Storage)** = **গুদামঘর** - সব কিছু permanently রাখা হয়
 
 যদি টেবিল (RAM) ভরে যায়, সব কিছু slow হয়ে যায়।  
-DevOps Engineer হিসেবে আমাদের কাজ হলো **টেবিল কে কতটুকু ব্যবহার করছে সেটা সবসময় নজরে রাখা।**
+DevOps Engineer হিসেবে আমাদের কাজ হলো টেবিল কে কতটুকু ব্যবহার করছে সেটা সবসময় নজরে রাখা।
 
 
 ## Tool 1: `free` - RAM ও Swap এর Overview
@@ -109,7 +109,7 @@ fi
 ### এটা কী করে?
 `free` এর চেয়ে বেশি detail দেয়। শুধু memory না, **CPU, I/O, এবং system activity** একসাথে দেখায়।
 
-**Analogy:** `free` যদি হয় আপনার অফিসের একটা snapshot ফটো। তাহলে `vmstat` হলো **CCTV ফুটেজ**, সব কিছু live দেখা যায়।
+> `free` যদি হয় আপনার অফিসের একটা snapshot ফটো। তাহলে `vmstat` হলো **CCTV ফুটেজ**, সব কিছু live দেখা যায়।
 
 
 ### Syntax:
@@ -230,7 +230,7 @@ vmstat -s
 Linux Kernel নিজে memory সম্পর্কে যা জানে সব এখানে লেখা থাকে।  
 `free` এবং `vmstat` এর data এখান থেকেই আসে।
 
-> **Analogy:** `/proc/meminfo` হলো **মূল রেজিস্টার খাতা**। `free` এবং `vmstat` সেই খাতা দেখে আপনাকে সুন্দরভাবে রিপোর্ট দেয়।
+> `/proc/meminfo` হলো মূল রেজিস্টার খাতা। `free` এবং `vmstat` সেই খাতা দেখে আপনাকে সুন্দরভাবে রিপোর্ট দেয়।
 
 
 ### Example - পুরো ফাইল দেখা:
@@ -277,8 +277,8 @@ HugePages_Free:        0
 
 
 ### Specific Field দেখা:
+শুধু Total আর Available Memory দেখা
 ```bash
-# শুধু Total আর Available দেখা
 grep -E "MemTotal|MemAvailable|SwapFree" /proc/meminfo
 ```
 
@@ -293,9 +293,9 @@ SwapFree:        2097148 kB
 ## Tool 4: `smem` - Process অনুযায়ী Memory ব্যবহার
 
 ### এটা কী করে?
-কোন **প্রতিটি Process** কতটুকু memory নিচ্ছে সেটা detail এ দেখায়।
+কোন Process কতটুকু memory নিচ্ছে সেটা detail এ দেখায়।
 
-> **Analogy:** অফিসে কোন employee টেবিলের কতটুকু জায়গা নিচ্ছে সেটার list।
+> অফিসে কোন employee টেবিলের কতটুকু জায়গা নিচ্ছে সেটার list।
 
 
 ### Installation (যদি না থাকে):
@@ -339,8 +339,6 @@ smem -r -s rss
 smem -r -s uss | head -10
 ```
 
----
-
 ### Example - Percentage হিসেবে দেখা:
 ```bash
 smem -p -r -s rss | head -10
@@ -354,7 +352,7 @@ smem -p -r -s rss | head -10
 | `free -h` | Quick overall RAM/Swap overview | Daily check, scripting |
 | `vmstat 2 5` | Memory + CPU + I/O একসাথে | Performance issue investigate |
 | `/proc/meminfo` | Raw kernel memory data | Deep dive, scripting |
-| `smem` | Process-wise memory breakdown | কোন process বেশি খাচ্ছে খুঁজতে |
+| `smem` | Process-wise memory breakdown | কোন process বেশি Memory খাচ্ছে খুঁজতে |
 
 
 ## Real DevOps Scenario - Memory Problem Diagnose করা
@@ -426,4 +424,15 @@ fi
 
 **Chapter 3 - Lesson 7: CPU Monitoring**
 
-`lscpu`, `mpstat`, `uptime`, **Load Average** কী এবং কীভাবে CPU performance measure করতে হয়, সব শিখবো পরের lesson এ! *Happy Learning* 🚀
+`lscpu`, `mpstat`, `uptime`, `Load Average` কী এবং কীভাবে CPU performance measure করতে হয়, সব শিখবো পরের lesson এ! *Happy Learning* 🚀
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../05-Process-Priority">← Process Priority</a>
+    </td>
+    <td align="right">
+      <a href="../07-CPU-Monitoring">CPU Monitoring →</a>
+    </td>
+  </tr>
+</table>

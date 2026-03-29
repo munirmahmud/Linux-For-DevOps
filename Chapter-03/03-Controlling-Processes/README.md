@@ -1,4 +1,4 @@
-# Chapter 3 - Lesson 3: Controlling Processes (kill, killall, pkill, signals)
+# Chapter 3 - Lesson 3: Controlling Processes
 
 **Chapter 3 | Lesson 3 of 10**
 

@@ -1,9 +1,9 @@
-# Chapter 3 - Lesson 8: Disk I/O Monitoring (iostat, iotop, df, du)
+# Chapter 3 - Lesson 8: Disk I/O Monitoring
 
 **Chapter 3 | Lesson 8 of 10**
 
 
-## 🎯 এই Lesson-এ কী শিখবো?
+## 🎯 এই Lesson-এ আমরা যা শিখবো
 
 আজকে আমরা শিখবো **Disk I/O Monitoring**। মানে আপনার Linux system-এর disk কতটা busy, কতটা data read/write হচ্ছে, কোন process disk ব্যবহার করছে এই সব কিছু track করা।
 
@@ -59,7 +59,7 @@ tmpfs           2.0G     0  2.0G   0% /dev/shm
 /dev/sdb1       200G   80G  110G  43% /data
 ```
 
-**Output বুঝি:**
+**চলুন Output বুঝি:**
 | Column | মানে |
 |--------|------|
 | `Filesystem` | কোন disk বা partition |
@@ -122,7 +122,7 @@ df -h | awk 'NR>1 {gsub(/%/,""); if ($5 > 80) print "WARNING: "$6" is "$5"% full
 ### ধারণা:
 `du` মানে **Disk Usage**। এটা দিয়ে আপনি দেখতে পারবেন কোন **file বা directory** কতটুকু disk space ব্যবহার করছে।
 
-> **Analogy:** `df` আপনাকে বলে দেয় পুরো ঘরে কতটা জায়গা আছে। `du` আপনাকে বলে কোন আলমারিতে, কোন ড্রয়ারে কতটা জায়গা নিচ্ছে।
+> `df` আপনাকে বলে দেয় পুরো ঘরে কতটা জায়গা আছে। `du` আপনাকে বলে কোন আলমারিতে, কোন ড্রয়ারে কতটা জায়গা নিচ্ছে।
 
 
 ### Syntax:
@@ -217,7 +217,7 @@ du -h /var --max-depth=2 | sort -rh | head -20
 ### ধারণা:
 `iostat` দিয়ে আপনি দেখতে পাবেন আপনার disk কত দ্রুত data **read** ও **write** করছে, এবং সেই সাথে CPU usage-ও দেখায়।
 
-> **Analogy:** এটা আপনার disk-এর speedometer বলে দেয় disk কত fast কাজ করছে।
+> এটা আপনার disk-এর speedometer বলে দেয় disk কত fast কাজ করছে।
 
 ### Installation (যদি না থাকে):
 ```bash
@@ -334,10 +334,9 @@ iostat -x 1 | awk '/^sd/ {if ($NF > 80) print "ALERT: "$1" disk utilization is "
 
 ## 4. `iotop` - I/O Top (কোন Process সবচেয়ে বেশি Disk ব্যবহার করছে)
 
-### ধারণা:
 `iotop` হলো `top`-এর মতো - কিন্তু CPU-র বদলে **Disk I/O** দেখায়। কোন process সবচেয়ে বেশি disk read/write করছে সেটা real-time-এ দেখা যায়।
 
-> **Analogy:** `top` দেখায় কে বেশি CPU খাচ্ছে, `iotop` দেখায় কে বেশি disk খাচ্ছে।
+> `top` দেখায় কে বেশি CPU খাচ্ছে, `iotop` দেখায় কে বেশি disk খাচ্ছে।
 
 ### Installation:
 ```bash
@@ -400,13 +399,16 @@ Current DISK READ:     45.23 M/s | Current DISK WRITE:    12.45 M/s
 ```bash
 sudo iotop -o
 ```
+
 > এটাই সবচেয়ে বেশি ব্যবহার হয়, শুধু যারা এই মুহূর্তে disk ব্যবহার করছে তাদের দেখায়।
 
 
 ### Example 3 - Batch mode (log করার জন্য):
+
 ```bash
 sudo iotop -b -n 5 -d 2
 ```
+
 > ২ সেকেন্ড পর পর, ৫ বার output দেবে, script বা cron-এ ব্যবহার করা যায়।
 
 
@@ -464,7 +466,7 @@ sudo iotop -o
 | Log file কতটা বড়? | `du -sh /var/log/syslog` |
 
 
-## Important Thresholds (DevOps এ মনে রাখো)
+## Important Thresholds (DevOps এ মনে রাখুন)
 
 | Metric | Normal | Warning | Critical |
 |--------|--------|---------|----------|
@@ -476,13 +478,14 @@ sudo iotop -o
 
 ## 📝 Quick Summary
 
--  **`df -h`** → Disk-এ কতটুকু space আছে/নেই দেখায়
--  **`du -sh`** → কোন directory কতটা space নিচ্ছে দেখায়
--  **`iostat -x`** → Disk-এর read/write speed ও busy-ness দেখায়
--  **`iotop -o`** → কোন process সবচেয়ে বেশি disk ব্যবহার করছে দেখায়
--  **`%iowait` বেশি** = CPU disk-এর জন্য অপেক্ষা করছে = I/O bottleneck
--  **`%util` > 80%** = Disk অনেক busy = সমস্যা হতে পারে
--  **Production issue এ sequence:** `df` → `du` → `iostat` → `iotop`
+-  `df -h` → Disk-এ কতটুকু space আছে/নেই দেখায়
+-  `du -sh` → কোন directory কতটা space নিচ্ছে দেখায়
+-  `iostat -x` → Disk-এর read/write speed ও busy-ness দেখায়
+-  `iotop -o` → কোন process সবচেয়ে বেশি disk ব্যবহার করছে দেখায়
+-  `%iowait` বেশি = CPU disk-এর জন্য অপেক্ষা করছে মানে I/O bottleneck
+-  `%util` > 80% = Disk অনেক busy = সমস্যা হতে পারে
+
+> Production-এ কোন issue হলে এই sequence ফলো করা ভালো: `df` → `du` → `iostat` → `iotop`
 
 
 ## 🏋️ Practice Tasks
