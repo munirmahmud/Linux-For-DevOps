@@ -621,3 +621,14 @@ fi
 **Chapter 4 - Lesson 6: Open Ports & Sockets (ss, netstat, lsof, nmap)**
 
 পরের lesson-এ আমরা শিখবো আপনার system-এ কোন ports open আছে, কোন process কোন port ব্যবহার করছে, এবং network connections কীভাবে দেখতে হয় - DevOps troubleshooting-এর জন্য অপরিহার্য skill! *Happy Learning* 🚀
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../04-DNS-Tools">← DNS Tools</a>
+    </td>
+    <td align="right">
+      <a href="../06-Open-Ports-Sockets">Open Ports Sockets →</a>
+    </td>
+  </tr>
+</table>

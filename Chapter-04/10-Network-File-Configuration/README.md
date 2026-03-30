@@ -564,7 +564,7 @@ ip route | grep default
       <a href="../09-Network-Packet-Analysis">← Network Packet Analysis</a>
     </td>
     <td align="right">
-      <a href="../11-Network-Bonding-Bridging-VLANs">Network Bonding, Bridging & VLANs →</a>
+      <a href="../11-Network-Bonding-Bridging-VLANs">Network Bonding, Bridging &amp; VLANs →</a>
     </td>
   </tr>
 </table>

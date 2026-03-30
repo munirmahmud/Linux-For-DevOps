@@ -1,4 +1,4 @@
-# Chapter 4 - Lesson 9: Network Packet Analysis (tcpdump basics)
+# Chapter 4 - Lesson 9: Network Packet Analysis
 
 **Chapter 4 | Lesson 9 of 11**
 
@@ -421,7 +421,7 @@ tcpdump-এ কীভাবে দেখা যাচ্ছে।
       <a href="../08-Firewall-Management">← Firewall Management</a>
     </td>
     <td align="right">
-      <a href="../10-networking-configuration-file">Networking Configuration →</a>
+      <a href="../10-Network-File-Configuration">Networking File Configuration →</a>
     </td>
   </tr>
 </table>

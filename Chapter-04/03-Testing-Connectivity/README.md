@@ -1,4 +1,4 @@
-# Chapter 4 - Lesson 3: Testing Connectivity (ping, traceroute, mtr)
+# Chapter 4 - Lesson 3: Testing Connectivity
 
 **Chapter 4 | Lesson 3 of 11**
 
@@ -338,3 +338,14 @@ cat /tmp/network_report.txt
 
 **Chapter 4 - Lesson 4: DNS Tools**
 `dig`, `nslookup`, `host` এবং `/etc/resolv.conf` - DNS কিভাবে কাজ করে এবং DNS সমস্যা কিভাবে debug করতে হয়, সেটা শিখবো। DevOps-এ DNS issue খুবই common - এটাতে master হতে পারলে অনেক সমস্যা সহজে সমাধান করতে পারবেন! *Happy Learning* 🚀
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../02-Viewing-Network-Configuration">← Viewing Network Configuration</a>
+    </td>
+    <td align="right">
+      <a href="../04-DNS-Tools">DNS Tools →</a>
+    </td>
+  </tr>
+</table>

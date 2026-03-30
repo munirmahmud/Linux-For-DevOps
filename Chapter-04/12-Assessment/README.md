@@ -1460,3 +1460,18 @@ xdg-open /opt/security-reports/security_audit_*.html
 # অথবা text report দেখুন:
 cat /opt/security-reports/security_audit_*.txt
 ```
+
+
+*Happy Learning* 🚀
+
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../11-Network-Bonding-Bridging-VLANs">← Network Bonding, Bridging & VLANs</a>
+    </td>
+    <td align="right">
+      <a href="../../Chapter-05/01-Shell-Scripting-Fundamentals/">Shell Scripting Fundamentals →</a>
+    </td>
+  </tr>
+</table>

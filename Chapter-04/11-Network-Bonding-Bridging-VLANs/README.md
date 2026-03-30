@@ -524,7 +524,7 @@ Shell Scripting শিখলে আপনি নিজেই automation tool ব
 <table width="100%">
   <tr>
     <td align="left">
-      <a href="../10-networking-configuration-file">← Networking Configuration File</a>
+      <a href="../10-Network-File-Configuration">← Networking File Configuration</a>
     </td>
     <td align="right">
       <a href="../12-Assesments">Chapter 4 - Assesments →</a>

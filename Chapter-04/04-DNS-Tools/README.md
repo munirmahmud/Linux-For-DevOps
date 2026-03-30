@@ -514,3 +514,14 @@ Google এর DNS (`8.8.8.8`) এবং Cloudflare এর DNS (`1.1.1.1`) দু
 **Chapter 4 - Lesson 5: Downloading & Transferring Files**
 
 > `curl`, `wget`, `scp`, `rsync` - file download করা, remote server-এ file পাঠানো, এবং efficiently sync করা শিখবো। এগুলো DevOps-এ প্রতিদিন কাজে লাগে! *Happy Learning* 🚀
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../03-Testing-Connectivity">← Testing Connectivity</a>
+    </td>
+    <td align="right">
+      <a href="../05-Downloading-And-Transferring-Files">Downloading And Transferring Files →</a>
+    </td>
+  </tr>
+</table>

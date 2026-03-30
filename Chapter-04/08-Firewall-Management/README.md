@@ -1,4 +1,4 @@
-# Chapter 4 - Lesson 8: Firewall Management (iptables, ufw, firewalld)
+# Chapter 4 - Lesson 8: Firewall Management
 
 **Chapter 4 | Lesson 8 of 11**
 

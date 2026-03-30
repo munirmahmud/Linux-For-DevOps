@@ -398,3 +398,14 @@ ip -s link show ens33
 
 **Chapter 4 - Lesson 3: Testing Connectivity**
 `ping`, `traceroute`, `mtr` - এই tools দিয়ে আপনি জানতে পারবেন আপনার server internet-এ পৌঁছাতে পারছে কিনা, এবং কোথায় network problem হচ্ছে। DevOps-এ network debugging-এর জন্য এগুলো অপরিহার্য! *Happy Learning* 🚀
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../01-Networking-Basics">← Networking Basics</a>
+    </td>
+    <td align="right">
+      <a href="../03-Testing-Connectivity">Testing Connectivity →</a>
+    </td>
+  </tr>
+</table>
