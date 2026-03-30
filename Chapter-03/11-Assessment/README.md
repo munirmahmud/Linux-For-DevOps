@@ -1,4 +1,4 @@
-# Chapter 3 - Final Assessment 
+# Chapter 3 - Assessment 
 
 **Total 13 Practice Tasks**
 
@@ -752,3 +752,14 @@ watch -n 2 '...'        → Continuous monitoring
 
 
 Chapter 3 officially complete! 🎉 এখন Chapter 4: Networking in Linux শুরু করার জন্য ready! যদি কোন একটা চ্যাপ্টারে আপনার দুর্বলতা থাকে তাহলে আপনার প্রতি আমার পরামর্শ থাকবে সেটা আবার রিভিউ করে তারপরে Chapter 4 শুরু করা। ফাউন্ডেশন স্ট্রং না হলে মাঝ পথে হাল ছেড়ে দিতে হবে বা একটা পর্যায়ে প্রাকটিস করতে আর ভালো লাগবে না। *Happy Learning* 🚀
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../10-Troubleshooting-High-CPU-Memory">← Troubleshooting High CPU/Memory</a>
+    </td>
+    <td align="right">
+      <a href="../../Chapter-04/01-Networking-Basics-Recap/">Networking Basics →</a>
+    </td>
+  </tr>
+</table>

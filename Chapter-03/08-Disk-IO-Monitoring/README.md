@@ -520,3 +520,14 @@ sudo iotop -o
 **Lesson 9: System-wide Performance (dstat, sar, glances)**
 
 পরের lesson-এ আমরা শিখবো কীভাবে CPU, Memory, Disk, Network সব কিছু **একসাথে** monitor করা যায় `dstat`, `sar`, এবং `glances` দিয়ে। এটা হবে আমাদের monitoring chapter-এর সবচেয়ে powerful lesson! *Happy Learning* 🚀
+
+<table width="100%">
+  <tr>
+    <td align="left">
+      <a href="../07-CPU-Monitoring">← CPU Monitoring</a>
+    </td>
+    <td align="right">
+      <a href="../09-System-wide-Performance">System-wide Performance →</a>
+    </td>
+  </tr>
+</table>
