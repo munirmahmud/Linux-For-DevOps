@@ -109,6 +109,54 @@ munir    1580  0.0  0.0   8936   812 pts/0    R+   10:10   0:00 ps aux
 | `N` | Low priority (nice) | অন্যদের চেয়ে কম priority - nice value বেশি |
 
 
+
+1) `Ss`
+```bash
+S  → Sleeping (অপেক্ষা করছে)
+s  → Session leader (এটি একটি session-এর boss process)
+```
+
+> Example: sshd, bash এরা সাধারণত Ss হয়।
+> sshd চালু আছে, কোনো connection-এর অপেক্ষায় আছে, এবং সে নিজেই session-এর leader।
+
+2) `Ssl`
+```bash
+S  → Sleeping
+s  → Session leader
+l  → Multi-threaded (একাধিক thread চলছে ভেতরে ভেতরে)
+```
+> Example: dockerd, containerd, NetworkManager এরা background-এ অনেক কাজ parallel-এ করে, তাই multi-threaded।
+
+3) `Ss+`
+```bash
+S  → Sleeping
+s  → Session leader
++  → Foreground process (terminal-এ সামনে চলছে)
+```
+> Example: আপনি যখন terminal খুলে bash চালান সেটা Ss+ হয়।
+> সামনে আছে, session leader, এবং অপেক্ষায় আছে আপনার command-এর জন্য।
+
+```bash
+Ss    = ঘুমাচ্ছে + session boss          → sshd, bash
+Ssl   = ঘুমাচ্ছে + session boss + multi-thread → dockerd
+Ss+   = ঘুমাচ্ছে + session boss + সামনে  → active terminal bash
+I<    = idle + high priority              → kernel threads
+SLsl  = ঘুমাচ্ছে + locked RAM + boss + multi-thread → real-time services
+SN    = ঘুমাচ্ছে + low priority           → background tasks
+```
+
+**Tip:**
+```bash
+# শুধু Zombie process দেখতে চাইলে:
+ps aux | awk '$8 == "Z"'
+
+# Multi-threaded processes দেখতে চাইলে:
+ps aux | awk '$8 ~ /l/'
+
+# High priority processes:
+ps aux | awk '$8 ~ /</'
+```
+
 #### নির্দিষ্ট একটি process খুঁজুন:
 
 ```bash
@@ -262,7 +310,7 @@ load average: 0.15, 0.10, 0.08
 ```bash
 # Rule of thumb:
 Load Average > CPU core সংখ্যা = সমস্যা আছে 🔴
-Load Average = CPU core সংখ্যা = সীমানায় আছে ⚠️
+Load Average = CPU core সংখ্যা = সীমার মধ্যে আছে ⚠️
 Load Average < CPU core সংখ্যা = সব ঠিক আছে ✅
 ```
 
@@ -282,7 +330,7 @@ Tasks: 120 total,   1 running, 119 sleeping,   0 stopped,   0 zombie
 
 | Code | পুরো নাম | মানে |
 |------|----------|------|
-| `us` | User Space | আপনার normal programs যতটুকু CPU নিচ্ছে |
+| `us` | User Space | normal programs যতটুকু CPU নিচ্ছে |
 | `sy` | System/Kernel | Linux kernel যতটুকু CPU নিচ্ছে |
 | `ni` | Nice | ইচ্ছাকৃতভাবে কম priority দেওয়া processes এর CPU usage |
 | `id` | Idle | CPU এখন সম্পূর্ণ খালি, কিছুই করছে না |
@@ -300,17 +348,17 @@ Tasks: 120 total,   1 running, 119 sleeping,   0 stopped,   0 zombie
 
 | Key | কাজ |
 |-----|-----|
-| `q` | top বন্ধ করো |
-| `k` | একটি process kill করো (PID চাইবে) |
-| `r` | process-এর priority (nice value) পরিবর্তন করো |
-| `M` | Memory usage অনুযায়ী sort করো |
-| `P` | CPU usage অনুযায়ী sort করো (default) |
-| `N` | PID অনুযায়ী sort করো |
-| `T` | Running time অনুযায়ী sort করো |
+| `q` | top বন্ধ করা |
+| `k` | একটি process kill করা (PID চাইবে) |
+| `r` | process-এর priority (nice value) পরিবর্তন করা |
+| `M` | Memory usage অনুযায়ী sort করা |
+| `P` | CPU usage অনুযায়ী sort করা (default) |
+| `N` | PID অনুযায়ী sort করা |
+| `T` | Running time অনুযায়ী sort করা |
 | `1` | প্রতিটি CPU core আলাদা দেখাও |
-| `u` | নির্দিষ্ট user-এর processes ফিল্টার করো |
+| `u` | নির্দিষ্ট user-এর processes ফিল্টার করা |
 | `h` | Help দেখুন |
-| Space | Manual refresh করো |
+| Space | Manual refresh করা |
 
 
 ### `top` এ নির্দিষ্ট user-এর process দেখুন:
@@ -372,15 +420,15 @@ htop
 | Key | কাজ |
 |-----|-----|
 | `F1` | Help |
-| `F2` | Setup (customize করো) |
+| `F2` | Setup (customize করা) |
 | `F3` | Search (process নাম দিয়ে খোঁজো) |
-| `F4` | Filter (ফিল্টার করো) |
+| `F4` | Filter (ফিল্টার করা) |
 | `F5` | Tree view (parent-child দেখাও) |
 | `F6` | Sort by column |
 | `F9` | Kill a process |
 | `F10` | Quit |
 | `u` | নির্দিষ্ট user-এর process দেখুন |
-| `Space` | একটি process select করো |
+| `Space` | একটি process select করা |
 | `t` | Tree view toggle |
 
 
@@ -527,16 +575,16 @@ ps -p 1023 -o pid,ppid,user,pcpu,pmem,stat,comm
 
 ## 📝 Quick Summary
 
-- **`ps`** → একটি snapshot - এই মুহূর্তে কী process চলছে দেখায়
-- **`ps aux`** → সব user-এর সব process বিস্তারিত দেখায়
-- **`ps aux | grep <name>`** → নির্দিষ্ট process খোঁজো
-- **`ps auxf`** → parent-child tree হিসেবে দেখাও
-- **`top`** → Real-time live process monitor
-- **`top -u user`** → নির্দিষ্ট user-এর processes দেখাও
-- **`htop`** → top-এর colorful, interactive version
-- **`pgrep nginx`** → নাম দিয়ে PID বের করো
-- **`pgrep -l nginx`** → নাম সহ PID দেখাও
-- **`pgrep -u user`** → নির্দিষ্ট user-এর process-এর PID বের করো
+- `ps` → একটি snapshot - এই মুহূর্তে কী process চলছে দেখায়
+- `ps aux` → সব user-এর সব process বিস্তারিত দেখায়
+- `ps aux | grep <name>` → নির্দিষ্ট process খুঁজে বের করা
+- `ps auxf` → parent-child tree হিসেবে দেখা
+- `top` → Real-time live process monitor
+- `top -u user_name` → নির্দিষ্ট user-এর processes দেখা
+- `htop` → top-এর colorful, interactive version
+- `pgrep nginx` → নাম দিয়ে PID বের করা
+- `pgrep -l nginx` → নাম সহ PID দেখা
+- `pgrep -u user_name` → নির্দিষ্ট user-এর process-এর PID বের করা
 
 
 ## 🏋️ Practice Tasks
